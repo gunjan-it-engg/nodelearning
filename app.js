@@ -1,4 +1,5 @@
 const add = require('./utils')
+const chalk = require('chalk');
 const validator = require('validator')  //global packages are not need to given ./ this thing
 const getNotes = require('./notes')
 console.log(getNotes);
@@ -18,3 +19,5 @@ try{
     console.log('error in the file system');
 }
 console.log(validator.isEmail('gunjan123.com'));
+console.log(chalk.blue.bgRed.bold("Hello World"));
+console.log(chalk.green.underline.bold('sucess!'));
