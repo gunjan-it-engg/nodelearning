@@ -21,3 +21,10 @@ try{
 console.log(validator.isEmail('gunjan123.com'));
 console.log(chalk.blue.bgRed.bold("Hello World"));
 console.log(chalk.green.underline.bold('sucess!'));
+console.log(chalk.blue.inverse.bold('hello!'));
+console.log(chalk.red.inverse.bold('hello!'));
+console.log(chalk.white.bold('hello!'));
+console.log(chalk.yellow.bold('hello!'));
+
+
+
