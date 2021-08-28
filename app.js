@@ -25,6 +25,14 @@ console.log(chalk.blue.inverse.bold('hello!'));
 console.log(chalk.red.inverse.bold('hello!'));
 console.log(chalk.white.bold('hello!'));
 console.log(chalk.yellow.bold('hello!'));
+// console.log(process.argv[2]);
 
 
+// taking input from the user
+const command = process.argv[2]
+if (command === 'add'){
+    console.log(chalk.green.bold("sucess! "));
+} else {
+    console.log(chalk.bgRed.bold("Not Found!"));
+}
 
