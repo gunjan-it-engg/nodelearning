@@ -10,17 +10,62 @@ const yargs = require('yargs')
 
 // yargs 
 yargs.version('1.1.1')
-// create add command
 
+// add , read , remove , list
+
+
+// create add command
 yargs.command({
     command:'add',
     describe:'add a new note',
-    handler: function(){
-        console.log("Adding a new note!")
+    builder:{
+        title:{
+            describe:'Add a new note',
+            demandOption: true,
+            type:'string', 
+        },
+        body:{
+            describe:'Note body',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler: function(argv){
+        console.log('Title:'+argv.title);
+        console.log('Body:-' + argv.body);
+        console.log("Adding a new note!",argv);
+        console.log(chalk.green.underline.bold("Sucess Added a note"));
     }
 })
 
-// add , read , remove , list
+// yargs remove command 
+yargs.command({
+    command:'remove',
+    describe:'removing a note from command',
+    handler:function(){
+        console.log("your note is removed")
+    }
+})
+
+
+// command to read 
+yargs.command({
+    command:'read',
+    describe:'You can read the docs with the self',
+    handler:function(){
+        console.log("your note in reading phase")
+    }
+})
+
+// command to create an list 
+yargs.command({
+    command:'list',
+    describe:'you are in list phase ',
+    handler:function () {
+        // body...
+        console.log("list is created")
+    }
+})
 
 
 const notes = getNotes()
@@ -54,3 +99,4 @@ if (command === 'add'){
 }
 // for printing the details related to the yarg
 console.log(yargs.argv);
+yargs.parse()
