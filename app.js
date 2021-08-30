@@ -31,6 +31,7 @@ yargs.command({
         }
     },
     handler: function(argv){
+        getNotes.addNote(argv.title,argv.body)
         console.log('Title:'+argv.title);
         console.log('Body:-' + argv.body);
         console.log("Adding a new note!",argv);
@@ -68,8 +69,8 @@ yargs.command({
 })
 
 
-const notes = getNotes()
-console.log(notes);
+// const notes = getNotes()
+// console.log(notes);
 const sum = add(45,2)
 console.log(sum)
 const fs = require('fs')
