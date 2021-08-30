@@ -2,9 +2,26 @@ const add = require('./utils')
 const chalk = require('chalk');
 const validator = require('validator')  //global packages are not need to given ./ this thing
 const getNotes = require('./notes')
-console.log(getNotes);
-console.log(add);
-console.log(validator);
+// yarg helps me to build interactive command line tool by parsing arguments & generating an elegent interface .
+const yargs = require('yargs')
+//console.log(getNotes);
+//console.log(add);
+//console.log(validator);
+
+// yargs 
+yargs.version('1.1.1')
+// create add command
+
+yargs.command({
+    command:'add',
+    describe:'add a new note',
+    handler: function(){
+        console.log("Adding a new note!")
+    }
+})
+
+// add , read , remove , list
+
 
 const notes = getNotes()
 console.log(notes);
@@ -28,11 +45,12 @@ console.log(chalk.yellow.bold('hello!'));
 // console.log(process.argv[2]);
 
 
-// taking input from the user
+// taking input from the user with the command line arguments
 const command = process.argv[2]
 if (command === 'add'){
-    console.log(chalk.green.bold("sucess! "));
+    console.log(chalk.green.bold("sucess! your add is getting "));
 } else {
     console.log(chalk.bgRed.bold("Not Found!"));
 }
-
+// for printing the details related to the yarg
+console.log(yargs.argv);
