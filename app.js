@@ -1,81 +1,79 @@
-const add = require('./utils')
-const chalk = require('chalk');
-const validator = require('validator')  //global packages are not need to given ./ this thing
-const getNotes = require('./notes')
+const add = require("./utils");
+const chalk = require("chalk");
+const validator = require("validator"); //global packages are not need to given ./ this thing
+const getNotes = require("./notes");
 // yarg helps me to build interactive command line tool by parsing arguments & generating an elegent interface .
-const yargs = require('yargs')
+const yargs = require("yargs");
 //console.log(getNotes);
 //console.log(add);
 //console.log(validator);
 
-// yargs 
-yargs.version('1.1.1')
+// yargs
+yargs.version("1.1.1");
 
 // add , read , remove , list
 
-
 // create add command
 yargs.command({
-    command:'add',
-    describe:'add a new note',
-    builder:{
-        title:{
-            describe:'Add a new note',
+    command: "add",
+    describe: "add a new note",
+    builder: {
+        title: {
+            describe: "Add a new note",
             demandOption: true,
-            type:'string', 
+            type: "string",
         },
-        body:{
-            describe:'Note body',
-            demandOption:true,
-            type:'string'
-        }
+        body: {
+            describe: "Note body",
+            demandOption: true,
+            type: "string",
+        },
     },
-    handler: function(argv){
-        getNotes.addNote(argv.title,argv.body)
+    handler: function (argv) {
+        getNotes.addNote(argv.title, argv.body);
         // console.log('Title:'+argv.title);
         // console.log('Body:-' + argv.body);
         // console.log("Adding a new note!",argv);
         // console.log(chalk.green.underline.bold("Sucess Added a note"));
-    }
-})
+    },
+});
 
-// yargs remove command 
+// yargs remove command
 yargs.command({
-    command:'remove',
-    describe:'removing a note from command',
-    builder:{
-        title:{
-            describe:'removing a note from the file',
+    command: "remove",
+    describe: "removing a note from command",
+    builder: {
+        title: {
+            describe: "removing a note from the file",
             demandOption: true,
-            type:'string',
+            type: "string",
         },
     },
-    handler:function(argv){
-        getNotes.removeNotes(argv.title)
-        console.log("your note is removed" + ' '+argv.title);
-    }
-})
+    handler: function (argv) {
+        getNotes.removeNotes(argv.title);
+        console.log("your note is removed" + " " + argv.title);
+    },
+});
 
-
-// command to read 
+// command to read
 yargs.command({
-    command:'read',
-    describe:'You can read the docs with the self',
-    handler:function(){
-        console.log("your note in reading phase")
-    }
-})
+    command: "read",
+    describe: "You can read the docs with the self",
+    handler: function () {
+        console.log("your note in reading phase");
+    },
+});
 
-// command to create an list 
+// command to create an list
 yargs.command({
-    command:'list',
-    describe:'you are in list phase ',
-    handler:function () {
+    command: "list",
+    describe: "you are in list phase ",
+    handler: function () {
+        getNotes.listNotes()
         // body...
-        console.log("list is created")
-    }
-})
-
+        console.log("list is created");
+    },
+});
 
 // const notes = getNotes()
 // console.log(notes);
@@ -98,7 +96,6 @@ yargs.command({
 // console.log(chalk.yellow.bold('hello!'));
 // // console.log(process.argv[2]);
 
-
 // // taking input from the user with the command line arguments
 // const command = process.argv[2]
 // if (command === 'add'){
@@ -108,4 +105,4 @@ yargs.command({
 // }
 // for printing the details related to the yarg
 // console.log(yargs.argv);
-yargs.parse()
+yargs.parse();
