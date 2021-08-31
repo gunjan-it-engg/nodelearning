@@ -36,9 +36,14 @@ const removeNotes = function(title){
         const removeNote = remove.filter(function(remove){
         return remove.title !== title
         })
-        saveNotes(removeNote)
+
+        if (remove.length > removeNote.length){
+            console.log(chalk.green.inverse('Note Removed'));
+            saveNotes(removeNote)
+        } else{
+            console.log(chalk.red.inverse('No note found !'))
+        }
     
-        console.log(chalk.green(title +' '+'title is removed'));
     } catch(er){
         console.log(chalk.red('Error is not removed'));
     }
