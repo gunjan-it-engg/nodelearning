@@ -32,10 +32,10 @@ yargs.command({
     },
     handler: function(argv){
         getNotes.addNote(argv.title,argv.body)
-        console.log('Title:'+argv.title);
-        console.log('Body:-' + argv.body);
-        console.log("Adding a new note!",argv);
-        console.log(chalk.green.underline.bold("Sucess Added a note"));
+        // console.log('Title:'+argv.title);
+        // console.log('Body:-' + argv.body);
+        // console.log("Adding a new note!",argv);
+        // console.log(chalk.green.underline.bold("Sucess Added a note"));
     }
 })
 
@@ -43,8 +43,16 @@ yargs.command({
 yargs.command({
     command:'remove',
     describe:'removing a note from command',
-    handler:function(){
-        console.log("your note is removed")
+    builder:{
+        title:{
+            describe:'removing a note from the file',
+            demandOption: true,
+            type:'string',
+        },
+    },
+    handler:function(argv){
+        getNotes.removeNotes(argv.title)
+        console.log("your note is removed" + ' '+argv.title);
     }
 })
 
@@ -71,33 +79,33 @@ yargs.command({
 
 // const notes = getNotes()
 // console.log(notes);
-const sum = add(45,2)
-console.log(sum)
-const fs = require('fs')
-fs.writeFileSync('notes.txt', 'This file was created by node js')
-try{
-    fs.appendFileSync('notes.txt','data to append');
-    console.log("the data to append was appended to file");
-} catch (err){
-    console.log('error in the file system');
-}
-console.log(validator.isEmail('gunjan123.com'));
-console.log(chalk.blue.bgRed.bold("Hello World"));
-console.log(chalk.green.underline.bold('sucess!'));
-console.log(chalk.blue.inverse.bold('hello!'));
-console.log(chalk.red.inverse.bold('hello!'));
-console.log(chalk.white.bold('hello!'));
-console.log(chalk.yellow.bold('hello!'));
-// console.log(process.argv[2]);
+// const sum = add(45,2)
+// console.log(sum)
+// const fs = require('fs')
+// fs.writeFileSync('notes.txt', 'This file was created by node js')
+// try{
+//     fs.appendFileSync('notes.txt','data to append');
+//     console.log("the data to append was appended to file");
+// } catch (err){
+//     console.log('error in the file system');
+// }
+// console.log(validator.isEmail('gunjan123.com'));
+// console.log(chalk.blue.bgRed.bold("Hello World"));
+// console.log(chalk.green.underline.bold('sucess!'));
+// console.log(chalk.blue.inverse.bold('hello!'));
+// console.log(chalk.red.inverse.bold('hello!'));
+// console.log(chalk.white.bold('hello!'));
+// console.log(chalk.yellow.bold('hello!'));
+// // console.log(process.argv[2]);
 
 
-// taking input from the user with the command line arguments
-const command = process.argv[2]
-if (command === 'add'){
-    console.log(chalk.green.bold("sucess! your add is getting "));
-} else {
-    console.log(chalk.bgRed.bold("Not Found!"));
-}
+// // taking input from the user with the command line arguments
+// const command = process.argv[2]
+// if (command === 'add'){
+//     console.log(chalk.green.bold("sucess! your add is getting "));
+// } else {
+//     console.log(chalk.bgRed.bold("Not Found!"));
+// }
 // for printing the details related to the yarg
 console.log(yargs.argv);
 yargs.parse()
