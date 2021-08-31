@@ -107,5 +107,5 @@ yargs.command({
 //     console.log(chalk.bgRed.bold("Not Found!"));
 // }
 // for printing the details related to the yarg
-console.log(yargs.argv);
+// console.log(yargs.argv);
 yargs.parse()

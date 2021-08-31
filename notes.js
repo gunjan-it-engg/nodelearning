@@ -6,23 +6,32 @@ const getNotes = function(){
 }
 const addNote = function(title, body){
     const note = loadNotes()
-    const duplicateNotes = note.filter(function(note){
-        return note.title === title
+    const duplicateNotes = note.filter(function(nte){
+        return nte.title === title
     })
-
+    // console.log("duplicateNotes :--", duplicateNotes);
+   
+        if(duplicateNotes.length>0){
+        console.log(chalk.red.inverse("Note title taken!"));
+        return;
+    }    
+     
     if (duplicateNotes.length === 0){
         note.push({
             title: title,
             body: body
         })
         saveNotes(note)
-        console.log(chalk.green("new note Added in add note!"));
-    } else {
-        console.log(chalk.red("Note title taken!"));
+        console.log(chalk.green.inverse("new note Added in add note!"));
     }
 
+ 
+    // } else {
+    //     console.log(chalk.red.inverse("Note title taken!"));
+    // }
+
     
-    console.log(note)
+    // console.log(note)
 }
 
 const saveNotes = function(note){
@@ -40,9 +49,10 @@ const removeNotes = function(title){
         if (remove.length > removeNote.length){
             console.log(chalk.green.inverse('Note Removed'));
             saveNotes(removeNote)
-        } else{
-            console.log(chalk.red.inverse('No note found !'))
         }
+        // } else{
+        //     console.log(chalk.red.inverse('No note found !'))
+        // }
     
     } catch(er){
         console.log(chalk.red('Error is not removed'));
