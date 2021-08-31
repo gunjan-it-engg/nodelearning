@@ -6,16 +6,27 @@ const getNotes = function(){
 }
 const addNote = function(title, body){
     const note = loadNotes()
-    note.push({
-        title: title,
-        body: body
+    const duplicateNotes = note.filter(function(note){
+        return note.title === title
     })
-    saveNotes(note)
+
+    if (duplicateNotes.length === 0){
+        note.push({
+            title: title,
+            body: body
+        })
+        saveNotes(note)
+        console.log(chalk.green("new note Added !"));
+    } else {
+        console.log(chalk.red("Note title taken!"));
+    }
+
+    
     console.log(note)
 }
 
-const saveNotes = function(notes){
-    const dataJSON = JSON.stringify(notes)
+const saveNotes = function(note){
+    const dataJSON = JSON.stringify(note)
     fs.writeFileSync('notes.json',dataJSON)
 }
 
