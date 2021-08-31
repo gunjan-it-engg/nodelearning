@@ -59,7 +59,15 @@ yargs.command({
 yargs.command({
     command: "read",
     describe: "You can read the docs with the self",
-    handler: function () {
+    builder:{
+        title:{
+            describe:"reading a list of titles associated with body",
+            demandOption:true,
+            type: "string",
+        },
+    },
+    handler: function (argv) {
+        getNotes.readNotes(argv.title);
         console.log("your note in reading phase");
     },
 });
