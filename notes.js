@@ -11,9 +11,8 @@ const addNote = function (title, body) {
     });
     const duplicateNote = note.find((notee)=>notee.title === title)
 
-    debugger
 
-    console.log("duplicateNotes :--", duplicateNotes);
+    // console.log("duplicateNotes :--", duplicateNotes);
 
     if (duplicateNotes.length > 0) {
         console.log(chalk.red.inverse("Note title taken!"));
