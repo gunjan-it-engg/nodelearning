@@ -48,6 +48,7 @@
 
 var axios = require("axios").default;
 var chalk = require('chalk');
+const request = require('request');
 
 var options = {
   method: 'GET',
@@ -65,6 +66,24 @@ axios.request(options).then(function (response) {
   console.log(chalk.inverse("Last Weather update", response.data.current.last_updated));
   console.log(chalk.red.inverse.bold("current Temprature",+ response.data.current.temp_c + " c in degree"));
 }).catch(function (error) {
+  console.log("error");
   console.error(error);
 });
 
+
+
+const geocodeURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/Washington.json?limit=2&access_token=pk.eyJ1IjoiZ3VuamFuc2hyaW1hbGkiLCJhIjoiY2t0MnFrNWhxMGd1YzJucjF2ZzdkazJ6bCJ9.rEZG0EObPRv0yGMO8HJTvA"
+
+request({ url:geocodeURL , json: true }, (error,response) => {
+
+  if(error){
+    console.log("error");
+  } else if(response.body.features.length === 0){
+    console.log("unable to find location");
+  }
+  else{
+    const latitude = response.body.features[0].center[0]
+    const longitude = response.body.features[0].center[1]
+    console.log(latitude,longitude);
+  }
+})
