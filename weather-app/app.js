@@ -20,8 +20,14 @@ var options = {
 };
 
 axios.request(options).then(function (response) {
-	const data = JSON.stringify(response.data);
-	console.log(data);
+	const data = (response.data);
+  const result = response.data.Places.forEach(placeId === 'STOC-sky'=>{
+    console.log(placeId);
+    return placeId;
+  })
+  // const result = response.data.forEach(Places => places);
+	console.log(result);
+  // console.log(response.data.Places[0]);
 }).catch(function (error) {
 	console.error(error);
 });
