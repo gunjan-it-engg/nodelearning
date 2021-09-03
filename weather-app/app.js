@@ -1,5 +1,5 @@
 const geocode = require('./utils/geocode.js');
-
+const forecast = require('./forecast.js');
 
 // // console.log('starting');
 // // setTimeout(()=> {
@@ -95,6 +95,11 @@ const geocode = require('./utils/geocode.js');
 geocode('Bosten',(error,data) => {
   console.log('Error',error);
   console.log('Data',data);
+})
+
+forecast(-75.7088,44.1545,(error,data) => {
+  console.log('Error',error)
+  console.log('Data',data)
 })
 
 // const request = require('request');
