@@ -31,7 +31,7 @@ app.get("/weather", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  res.send("about page here");
+  res.send("./about.html");
 });
 //app.com
 //app.com/help
